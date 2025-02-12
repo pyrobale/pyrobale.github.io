@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>پایروبله - کتابخانه API ربات بله</title>
+    <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" type="text/css" />
+    <style>
+        body { 
+            font-family: 'Vazir', Arial, sans-serif;
+            line-height: 1.8;
+            margin: 0;
+            background-color: #f5f5f5;
+            text-align: right;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        h1 { 
+            color: #0088cc;
+            font-size: 2.5em;
+            text-align: center;
+            margin-bottom: 30px;
+            font-weight: bold;
+        }
+        h2 { 
+            color: #006699;
+            margin-top: 40px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #0088cc;
+            font-weight: bold;
+        }
+        h3 { 
+            color: #004466;
+            margin-top: 25px;
+            font-weight: bold;
+        }
+        pre { 
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            border-right: 4px solid #0088cc;
+            border-left: none;
+            direction: ltr;
+            text-align: left;
+        }
+        .method {
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .parameter { 
+            margin-right: 20px;
+            color: #666;
+        }
+        .return { 
+            color: #0088cc;
+            font-weight: bold;
+        }
+        .example {
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        code {
+            background: #f8f9fa;
+            padding: 2px 6px;
+            border-radius: 4px;
+            color: #0088cc;
+            direction: ltr;
+            display: inline-block;
+        }
+        ul {
+            list-style-type: none;
+            padding-right: 0;
+        }
+        ul li {
+            margin-bottom: 10px;
+            padding-right: 20px;
+            position: relative;
+        }
+        ul li:before {
+            content: "•";
+            color: #0088cc;
+            position: absolute;
+            right: 0;
+        }
+        .header-banner {
+            background: linear-gradient(135deg, #0088cc, #004466);
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .header-banner h1 {
+            color: white;
+            margin: 0;
+        }
+        .header-banner p {
+            color: rgba(255,255,255,0.9);
+            font-size: 1.2em;
+            margin: 10px 0 0 0;
+        }
+        footer {
+            background: #006699;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 50px;
+        }
+        #contact-link {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .contact {
+            text-align: center;
+            padding: 20px;
+            background: #fff;
+            margin-top: 30px;
+        }
+        .social-links {
+            margin-top: 15px;
+        }
+        .social-icon {
+            margin: 0 10px;
+            color: #0088cc;
+            font-size: 24px;
+            text-decoration: none;
+        }
+        @font-face {
+            font-family: 'Vazir';
+            src: url('https://cdn.fontcdn.ir/Font/Persian/Vazir/Vazir.eot');
+            src: url('https://cdn.fontcdn.ir/Font/Persian/Vazir/Vazir.eot?#iefix') format('embedded-opentype'),
+                  url('https://cdn.fontcdn.ir/Font/Persian/Vazir/Vazir.woff2') format('woff2'),
+                  url('https://cdn.fontcdn.ir/Font/Persian/Vazir/Vazir.woff') format('woff'),
+                  url('https://cdn.fontcdn.ir/Font/Persian/Vazir/Vazir.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <div class="header-banner">
+        <h1>مستندات پایروبله</h1>
+        <p>کتابخانه پایتون برای تعامل با API ربات بله</p>
+    </div>
+
+    <div class="container">
+        <h2>نصب و راه‌اندازی</h2>
+        <pre>pip install pyrobale</pre>
+
+        <h2>شروع سریع</h2>
+        <div class="example">
+            <pre>
+from pyrobale import Client
+
+bot = Client("YOUR_BOT_TOKEN")
+
+@bot.on_message
+def handle_message(message):
+    if message.text == "/start":
+        message.reply_message("سلام! به ربات من خوش آمدید!")
+
+bot.run()</pre>
+        </div>
+
+        <h2>کلاس‌های اصلی</h2>
+
+        <h3>Client</h3>
+        <p>کلاس اصلی برای تعامل با API بله</p>
+        <div class="method">
+            <h4>متدها:</h4>
+            <ul>
+                <li><code>__init__(token: str, session: str = 'https://tapi.bale.ai', database_name='database.db')</code></li>
+                <li><code>run()</code> - شروع دریافت آپدیت‌ها</li>
+                <li><code>safe_close()</code> - توقف ایمن ربات</li>
+                <li><code>send_message(chat_id, text, parse_mode=None, reply_markup=None)</code></li>
+                <li><code>send_photo(chat_id, photo, caption=None, parse_mode=None, reply_markup=None)</code></li>
+                <li><code>send_document(chat_id, document, caption=None, parse_mode=None, reply_markup=None)</code></li>
+                <li><code>send_video(chat_id, video, caption=None, parse_mode=None, reply_markup=None)</code></li>
+                <li><code>send_audio(chat_id, audio, caption=None, parse_mode=None, reply_markup=None)</code></li>
+                <li><code>send_voice(chat_id, voice, caption=None, parse_mode=None, reply_markup=None)</code></li>
+                <li><code>send_location(chat_id, latitude, longitude, reply_markup=None)</code></li>
+                <li><code>send_contact(chat_id, phone_number, first_name, last_name=None, reply_markup=None)</code></li>
+                <li><code>send_invoice(chat_id, title, description, payload, provider_token, prices, photo_url=None, reply_markup=None)</code></li>
+            </ul>
+        </div>
+
+        <h3>Message</h3>
+        <p>نمایانگر یک پیام در بله</p>
+        <div class="method">
+            <h4>ویژگی‌ها:</h4>
+            <ul>
+                <li><code>message_id</code> - شناسه منحصر به فرد پیام</li>
+                <li><code>from_user</code> - فرستنده پیام</li>
+                <li><code>date</code> - تاریخ ارسال پیام</li>
+                <li><code>chat</code> - چت مربوط به پیام</li>
+                <li><code>text</code> - متن پیام</li>
+                <li><code>caption</code> - عنوان برای پیام‌های رسانه‌ای</li>
+                <li><code>document</code> - اطلاعات سند</li>
+                <li><code>photo</code> - سایزهای موجود عکس</li>
+                <li><code>video</code> - اطلاعات ویدیو</li>
+                <li><code>audio</code> - اطلاعات صوت</li>
+                <li><code>voice</code> - اطلاعات پیام صوتی</li>
+                <li><code>contact</code> - اطلاعات مخاطب</li>
+                <li><code>location</code> - اطلاعات موقعیت مکانی</li>
+            </ul>
+        </div>
+
+        <h3>Chat</h3>
+        <p>نمایانگر یک مکالمه چت</p>
+        <div class="method">
+            <h4>ویژگی‌ها:</h4>
+            <ul>
+                <li><code>id</code> - شناسه منحصر به فرد چت</li>
+                <li><code>type</code> - نوع چت (خصوصی، گروه، ابرگروه، کانال)</li>
+                <li><code>title</code> - عنوان چت</li>
+                <li><code>username</code> - نام کاربری چت</li>
+                <li><code>description</code> - توضیحات چت</li>
+            </ul>
+        </div>
+
+        <h3>User</h3>
+        <p>نمایانگر یک کاربر بله</p>
+        <div class="method">
+            <h4>ویژگی‌ها:</h4>
+            <ul>
+                <li><code>id</code> - شناسه منحصر به فرد کاربر</li>
+                <li><code>is_bot</code> - آیا این کاربر ربات است</li>
+                <li><code>first_name</code> - نام کاربر</li>
+                <li><code>last_name</code> - نام خانوادگی کاربر</li>
+                <li><code>username</code> - نام کاربری</li>
+            </ul>
+        </div>
+
+        <h2>صفحه کلیدها</h2>
+
+        <h3>MenuKeyboardMarkup</h3>
+        <p>ایجاد صفحه کلید سفارشی با دکمه‌های منو</p>
+        <div class="example">
+            <pre>
+keyboard = MenuKeyboardMarkup()
+keyboard.add(MenuKeyboardButton("دکمه ۱"))
+keyboard.add(MenuKeyboardButton("دکمه ۲"), row=1)
+message.reply_message("یک گزینه انتخاب کنید:", reply_markup=keyboard)</pre>
+        </div>
+
+        <h3>InlineKeyboardMarkup</h3>
+        <p>ایجاد صفحه کلید درون‌خطی با دکمه‌های بازخورد</p>
+        <div class="example">
+            <pre>
+keyboard = InlineKeyboardMarkup()
+keyboard.add(InlineKeyboardButton("کلیک کنید!", callback_data="button1"))
+keyboard.add(InlineKeyboardButton("مشاهده وبسایت", url="https://example.com"), row=1)
+message.reply_message("یک گزینه انتخاب کنید:", reply_markup=keyboard)</pre>
+        </div>
+
+        <h2>مدیریت رویدادها</h2>
+        <div class="method">
+            <ul>
+                <li><code>@bot.on_message</code> - مدیریت پیام‌های جدید</li>
+                <li><code>@bot.on_callback_query</code> - مدیریت درخواست‌های بازخورد از صفحه کلید درون‌خطی</li>
+                <li><code>@bot.on_member_chat_join</code> - مدیریت اعضای جدید چت</li>
+                <li><code>@bot.on_member_chat_leave</code> - مدیریت خروج اعضا از چت</li>
+                <li><code>@bot.on_message_edit</code> - مدیریت پیام‌های ویرایش شده</li>
+                <li><code>@bot.on_ready</code> - مدیریت راه‌اندازی ربات</li>
+                <li><code>@bot.on_close</code> - مدیریت خاموش شدن ربات</li>
+                <li><code>@bot.on_tick(seconds)</code> - مدیریت رویدادهای دوره‌ای</li>
+            </ul>
+        </div>
+
+        <h2>پایگاه داده</h2>
+        <p>پایگاه داده SQLite داخلی برای ذخیره اطلاعات</p>
+        <div class="example">
+            <pre>
+# دسترسی به پایگاه داده
+db = bot.database
+
+# ذخیره داده
+db.write_key("user_123", {"points": 100})
+
+# بازیابی داده
+data = db.read_key("user_123")
+
+# حذف داده
+db.delete_key("user_123")</pre>
+        </div>
+
+        <h2>مدیریت خطا</h2>
+        <div class="example">
+            <pre>
+try:
+    message.reply_message("سلام!")
+except BaleException as e:
+    print(f"خطا در ارسال پیام: {e}")</pre>
+        </div>
+    </div>
+
+    <div class="contact">
+        <p>تماس با من: <a href="https://daradege.ir/contact" class="contact-link">daradege.ir/contact</a></p>
+        <div class="social-links">
+            <a href="https://github.com/daradege" class="social-icon"><i class="fab fa-github"></i></a>
+            <a href
