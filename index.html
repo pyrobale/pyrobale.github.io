@@ -471,32 +471,7 @@
                 <h2>یک نمونه ساده</h2>
                 <p>با چند خط کد ساده، اولین ربات خود را بسازید:</p>
                 
-                <div class="code-container">
-                    <div class="code-header">
-                        <div class="code-dot"></div>
-                        <div class="code-dot"></div>
-                        <div class="code-dot"></div>
-                    </div>
-                    <div class="code-content">
-<pre><span style="color: #ff79c6;">from</span> <span style="color: #50fa7b;">pyrobale.objects</span> <span style="color: #ff79c6;">import</span> *
-<span style="color: #ff79c6;">from</span> <span style="color: #50fa7b;">pyrobale.client</span> <span style="color: #ff79c6;">import</span> <span style="color: #50fa7b;">Client</span>, <span style="color: #50fa7b;">Message</span>, <span style="color: #50fa7b;">UpdatesTypes</span>
-<span style="color: #ff79c6;">import</span> <span style="color: #50fa7b;">asyncio</span>
-
-<span style="color: #8be9fd;">client</span> = <span style="color: #50fa7b;">Client</span>(<span style="color: #f1fa8c;">"YOUR_BOT_TOKEN"</span>)
-
-<span style="color: #ff79c6;">async def</span> <span style="color: #8be9fd;">handle_message</span>(<span style="color: #ffb86c;">message</span>: <span style="color: #8be9fd;">Message</span>):
-    <span style="color: #ff79c6;">if</span> <span style="color: #ffb86c;">message</span>.<span style="color: #50fa7b;">text</span> == <span style="color: #f1fa8c;">"/start"</span>:
-        <span style="color: #ff79c6;">await</span> <span style="color: #ffb86c;">message</span>.<span style="color: #50fa7b;">reply</span>(<span style="color: #f1fa8c;">"سلام! من یک ربات PyRoBale هستم!"</span>)
-
-<span style="color: #8be9fd;">client</span>.<span style="color: #50fa7b;">add_handler</span>(<span style="color: #8be9fd;">UpdatesTypes</span>.<span style="color: #bd93f9;">MESSAGE</span>, <span style="color: #8be9fd;">handle_message</span>)
-
-<span style="color: #8be9fd;">client</span>.<span style="color: #50fa7b;">run</span>()
-</pre>
-                    </div>
-                </div>
-                
-                <a href="javascript:void(0)" onclick="showDocs()" class="btn btn-primary">مستندات کامل را ببینید</a>
-            </div>
+                <script src="https://gist.github.com/Daradege/544cc6e9f58dd1889e8b56eadc6d2abc.js"></script>
         </section>
     </main>
 
